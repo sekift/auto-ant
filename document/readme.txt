@@ -25,8 +25,10 @@
  1.Java 1.8.0<br />
  2.Selenium、WebDriver<br />
 # 展望
- 1.兼容Linux，在Linux上自动运行<br />
- 2.使用定时器，定时执行任务<br />
- 3.日志分析<br />
- 4.TimeSleep可以做切面或者实现嵌入，非入侵代码<br />
- 5.可以使用cucumber-jvm进行驱动开发<br />
+ 1.该用Maven构建项目<br />
+ 2.添加其他网站<br />
+ 3.兼容Linux，在Linux上自动运行<br />
+ 4.使用定时器，定时执行任务<br />
+ 5.日志分析<br />
+ 6.TimeSleep可以做切面或者实现嵌入，非入侵代码<br />
+ 7.可以使用cucumber-jvm进行驱动开发<br />
