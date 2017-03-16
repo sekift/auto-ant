@@ -1,0 +1,66 @@
+package com.ant.auto.tianya;
+
+import java.io.File;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxBinary;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxProfile;
+
+import com.ant.auto.util.SendMessageTool;
+import com.ant.auto.util.SleepUtil;
+
+public class TianyaRegisterTest {
+	public static void main(String[] args) {
+		System.setProperty("webdriver.gecko.driver",
+				"D:\\selenium\\geckodriver.exe");
+		File pathBinary = new File(
+				"D:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe");
+		FirefoxBinary firefoxBinary = new FirefoxBinary(pathBinary);
+		FirefoxProfile firefoxProfile = new FirefoxProfile();
+		WebDriver driver = new FirefoxDriver(firefoxBinary, firefoxProfile);
+
+		String baseUrl = "https://passport.tianya.cn";
+		driver.get(baseUrl
+				+ "/register/default.jsp?sourceURL=http://www.tianya.cn");
+		SleepUtil.sleepBySecond(3, 6);
+		driver.findElement(By.id("userName")).clear();
+		driver.findElement(By.id("userName")).sendKeys("abc");
+		driver.findElement(By.cssSelector("div.header.clearfix")).click();
+		SleepUtil.sleepBySecond(3, 6);
+		driver.findElement(By.id("userName")).clear();
+		driver.findElement(By.id("userName")).sendKeys("abc12");
+		driver.findElement(By.id("userName")).clear();
+		driver.findElement(By.id("userName")).sendKeys("abc1789");
+		driver.findElement(By.id("userName")).clear();
+		driver.findElement(By.id("userName")).sendKeys("abc123490");
+		driver.findElement(By.id("userName")).clear();
+		SleepUtil.sleepBySecond(3, 6);
+		driver.findElement(By.id("userName")).sendKeys("御");
+		driver.findElement(By.cssSelector("div.header.clearfix")).click();
+		driver.findElement(By.id("password")).clear();
+		driver.findElement(By.id("password")).sendKeys("awfe");
+		driver.findElement(By.id("password")).clear();
+		driver.findElement(By.id("password")).sendKeys("abc");
+		driver.findElement(By.id("get_mobile_vcode")).click();
+		SleepUtil.sleepBySecond(3, 6);
+		driver.findElement(By.id("mobile")).clear();
+		driver.findElement(By.id("mobile")).sendKeys("1363");
+		driver.findElement(By.id("get_mobile_vcode")).click();
+		//SleepUtil.sleepBySecond(6, 12);
+		//driver.findElement(By.xpath("(//button[@type='button'])[2]")).click();
+		//给一分钟时间接收短信
+		SleepUtil.sleepBySecond(40, 60);
+		driver.findElement(By.id("mobileVcode")).clear();
+		//获取短信验证码
+		String code = SendMessageTool.getMessageByRemoteSMS();
+		driver.findElement(By.id("mobileVcode")).sendKeys(code);
+		SleepUtil.sleepBySecond(5, 8);
+		driver.findElement(By.id("register_btn")).click();
+		SleepUtil.sleepBySecond(5, 9);
+		//driver.findElement(By.cssSelector("body")).click();
+		driver.findElement(By.partialLinkText("跳过")).click();
+		SleepUtil.sleepBySecond(10, 20);
+	}
+}
