@@ -26,7 +26,7 @@
  2.Selenium、WebDriver<br />
  3.需要的包可以到：http://pan.baidu.com/s/1hssU8YS 下载 <br />
 # 展望
- 1.该用Maven构建项目<br />
+ 1.改用Maven构建项目<br />
  2.添加其他网站<br />
  3.兼容Linux，在Linux上自动运行<br />
  4.使用定时器，定时执行任务<br />
