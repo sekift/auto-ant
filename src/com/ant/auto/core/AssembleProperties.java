@@ -34,11 +34,11 @@ public class AssembleProperties {
 			} else if (obj instanceof List) {
 				accountList = (List<String>) obj;
 			} else {
-				logger.info("配置加载失败，请检查类型。");
+				logger.error("配置加载失败，请检查类型。");
 			}
 			logger.info("配置加载成功。");
 		} else {
-			logger.info("配置加载失败，请检查。");
+			logger.error("配置加载失败，请检查。");
 		}
 		try {
 			if (accountList != null && accountList.size() > 0) {
@@ -46,7 +46,7 @@ public class AssembleProperties {
 					Map<String, String> resultMap = new HashMap<String, String>();
 					// 判断是否有密码
 					if (!str.contains(Constants.accountSeparator)) {
-						resultMap.put("toutiao_target", str);
+						resultMap.put("target", str);
 					} else {
 						String[] mapArray = str
 								.split(Constants.accountSeparator);

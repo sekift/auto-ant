@@ -21,7 +21,7 @@ public class ToutiaoMain {
 					map.get("password"), driver, 2);
 			for (Map<String, String> targetMap : targetList) {
 				ToutiaoViewFollow.viewFollow(driver,
-						targetMap.get("toutiao_target"));
+						targetMap.get("target"));
 			}
 		}
 	}
