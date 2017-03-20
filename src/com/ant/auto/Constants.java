@@ -16,6 +16,17 @@ public class Constants {
 	}
 
 	// 账号分割
-	public static final String accountSeparator = "----";
+	public static final String ACCOUNT_SEPARATOR = "----";
+	
+	//配置关键字
+	public static final String USERNAME_STR = "username"; 
+	public static final String PASSWORD_STR = "password"; 
+
+	public static final String BAIDU_STR = "baidu"; 
+	public static final String WEIBO_STR = "weibo"; 
+	public static final String ACCOUNT_STR = "account"; 
+	public static final String TARGET_STR = "target"; 
+	public static final String TOUTIAO_TARGET_STR = "toutiao_target"; 
+	public static final String QQ_STR = "qq"; 
 
 }

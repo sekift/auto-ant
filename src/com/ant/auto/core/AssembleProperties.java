@@ -45,11 +45,11 @@ public class AssembleProperties {
 				for (String str : accountList) {
 					Map<String, String> resultMap = new HashMap<String, String>();
 					// 判断是否有密码
-					if (!str.contains(Constants.accountSeparator)) {
+					if (!str.contains(Constants.ACCOUNT_SEPARATOR)) {
 						resultMap.put("target", str);
 					} else {
 						String[] mapArray = str
-								.split(Constants.accountSeparator);
+								.split(Constants.ACCOUNT_SEPARATOR);
 						resultMap.put("username", mapArray[0]);
 						resultMap.put("password", mapArray[1]);
 					}

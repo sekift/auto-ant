@@ -129,7 +129,7 @@ public class ToutiaoLogin {
 
 			/**
 			 * 验证码？很久未登录才需要验证码
-			 * 判断验证码
+			 * 判断验证码---接入打码机
 			 */
 			driver.findElement(By.id("go")).click();
 			SleepUtil.sleepBySecond(2, 7);

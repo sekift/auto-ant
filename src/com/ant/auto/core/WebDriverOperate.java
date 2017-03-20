@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchWindowException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -83,6 +84,19 @@ public class WebDriverOperate {
 		}
 		return result;
 	}
+	
+	// 获取数据
+	public static String getStringTextByPath(WebDriver driver,
+			String element) {
+		String result = "";
+		try {
+			result = driver.findElement(By.xpath(element)).getText();
+		} catch (Exception e) {
+			logger.warn("页面 " + driver.getCurrentUrl() + " ,获取元素 " + element
+					+ " 不存在，请注意");
+		}
+		return result;
+	}
 
 	// 获取数据
 	public static WebElement getWebElementByClassName(WebDriver driver,
@@ -96,5 +110,16 @@ public class WebDriverOperate {
 		}
 		return result;
 	}
+	
 
+	public void fullMethod(){
+		WebDriver driver = new FirefoxDriver();
+		//前进
+		driver.navigate().forward();
+		//后退
+		driver.navigate().back();
+		
+		
+		
+	}
 }
