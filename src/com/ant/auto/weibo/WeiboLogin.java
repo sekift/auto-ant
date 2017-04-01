@@ -20,14 +20,14 @@ public class WeiboLogin {
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		Navigation navigation = driver.navigate();
 		navigation.to(weiboUrl);
-		SleepUtil.sleepBySecond(1, 3);
+		SleepUtil.sleepBySecond(30, 50);
 
 		driver.findElement(By.id("loginname")).clear();
 		driver.findElement(By.id("loginname")).sendKeys(username);
 		SleepUtil.sleepBySecond(1, 3);
 		driver.findElement(By.name("password")).clear();
 		driver.findElement(By.name("password")).sendKeys(password);
-		SleepUtil.sleepBySecond(1, 3);
+		SleepUtil.sleepBySecond(3, 6);
 		driver.findElement(
 				By.xpath("//div[@id='pl_login_form']/div/div[3]/div[6]/a/span"))
 				.click();
@@ -41,6 +41,7 @@ public class WeiboLogin {
 		} else {
 			logger.info("weibo登录失败，username=" + username);
 		}
+		SleepUtil.sleepBySecond(3, 6);
 		return driver;
 	}
 }

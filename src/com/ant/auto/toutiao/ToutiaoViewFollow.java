@@ -37,12 +37,12 @@ public class ToutiaoViewFollow {
 		String number = driver.findElement(By.cssSelector(numberIStr))
 				.getText();
 		int followSum = Integer.valueOf(number);
+		// 此处待完善，如果这个人没有被关注，而关注的另外有人，这种情况没有考虑
 		if (followSum == 0) {
 			logger.warn(userHead + " 此号没有关注人，请先关注。");
 
-			// 直接关闭 或者 先转去搜索并关注
+			// 先转去搜索并关注
 			driver = searchAndFollow(driver, target, userHead + titlePro);
-			SleepUtil.sleepBySecond(1, 3);
 		}
 		SleepUtil.sleepBySecond(1, 3);
 

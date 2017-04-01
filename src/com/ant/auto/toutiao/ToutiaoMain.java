@@ -3,6 +3,7 @@ package com.ant.auto.toutiao;
 import java.util.List;
 import java.util.Map;
 
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import com.ant.auto.Constants;
 import com.ant.auto.core.AssembleBrowser;
 import com.ant.auto.core.AssembleProperties;
+import com.ant.auto.util.SleepUtil;
 
 public class ToutiaoMain {
 	private static final Logger logger = LoggerFactory
@@ -17,7 +19,7 @@ public class ToutiaoMain {
 
 	public static void main(String args[]) {
 		WebDriver driver = null;
-		int type = 2;
+		int type = 1;
 		String chargeType = null;
 		if (1 == type) {
 			chargeType = Constants.WEIBO_STR;
@@ -30,6 +32,7 @@ public class ToutiaoMain {
 				Constants.TOUTIAO_TARGET_STR, Constants.ACCOUNT_STR);
 		for (Map<String, String> map : list) {
 			driver = AssembleBrowser.setChrome();
+			//尺寸不能缩小，要不看不见
 			driver = ToutiaoLogin.ttLogin(map.get(Constants.USERNAME_STR),
 					map.get(Constants.PASSWORD_STR), driver, type);
 			for (Map<String, String> targetMap : targetList) {
@@ -38,6 +41,7 @@ public class ToutiaoMain {
 				ToutiaoOperate.operateTarget(driver, type);
 			}
 			logger.info(map.get(Constants.USERNAME_STR) + " 已经完成任务。");
+			SleepUtil.sleepByMinute(3, 5);
 			driver.quit();
 		}
 	}

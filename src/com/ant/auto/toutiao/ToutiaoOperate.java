@@ -2,6 +2,7 @@ package com.ant.auto.toutiao;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -39,7 +40,7 @@ public class ToutiaoOperate {
 		/**
 		 * unsubscribe 未关注 subscribe 已关注
 		 */
-		boolean isFollow = true;
+		boolean isFollow = false;
 		if (isFollow) {
 			String unsubscribe = "div.article-unsubscribe.left-arrow > span";
 			String followed = WebDriverOperate.getStringTextByCssSelector(
@@ -48,6 +49,16 @@ public class ToutiaoOperate {
 				driver.findElement(By.cssSelector(unsubscribe)).click();
 			}
 		}
+		SleepUtil.sleepBySecond(1, 4);
+		
+		Actions actions = new Actions(driver);
+		actions.moveByOffset(154, 223).click().build().perform();// 点击
+		SleepUtil.sleepBySecond(1, 4);
+		actions.moveByOffset(322, 445).click().build().perform();// 点击
+		SleepUtil.sleepBySecond(1, 4);
+		actions.moveByOffset(523, 660).click().build().perform();// 点击
+		SleepUtil.sleepBySecond(1, 4);
+		actions.moveByOffset(714, 620).click().build().perform();// 点击
 		SleepUtil.sleepBySecond(1, 4);
 		// 收藏 有bug 重复点击会去掉收藏
 		/**

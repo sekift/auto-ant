@@ -22,7 +22,7 @@ public class WebDriverOperate {
 			.getLogger(WebDriverOperate.class);
 
 	/**
-	 * 根据title切换窗口
+	 * 根据title切换窗口--模糊匹配
 	 * 
 	 * @param driver
 	 * @param windowTitle
@@ -38,6 +38,37 @@ public class WebDriverOperate {
 				else {
 					driver.switchTo().window(s);
 					if (driver.getTitle().contains(windowTitle)) {
+						logger.info("转到窗口: " + windowTitle
+								+ " 成功！");
+						break;
+					} else
+						continue;
+				}
+			}
+		} catch (NoSuchWindowException e) {
+			logger.error("窗口: " + windowTitle + " 未能找到！",
+					e.fillInStackTrace());
+		}
+		return driver;
+	}
+	
+	/**
+	 * 根据title切换窗口--全匹配
+	 * 
+	 * @param driver
+	 * @param windowTitle
+	 * @return
+	 */
+	public static WebDriver switchToWindowFull(WebDriver driver, String windowTitle) {
+		try {
+			String currentHandle = driver.getWindowHandle();
+			Set<String> handles = driver.getWindowHandles();
+			for (String s : handles) {
+				if (s.equals(currentHandle))
+					continue;
+				else {
+					driver.switchTo().window(s);
+					if (driver.getTitle().equals(windowTitle)) {
 						logger.info("转到窗口: " + windowTitle
 								+ " 成功！");
 						break;
