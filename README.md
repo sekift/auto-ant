@@ -31,5 +31,5 @@
  3.兼容Linux，在Linux上自动运行<br />
  4.使用定时器，定时执行任务<br />
  5.日志分析<br />
- 6.TimeSleep可以做切面或者实现嵌入，非入侵代码<br />
+ 6.TimeSleep可以实现嵌入，非入侵代码<br />
  7.可以使用cucumber-jvm进行驱动开发<br />
