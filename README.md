@@ -23,8 +23,8 @@
  2.切换代理IP（没有实现）<br />
 # 技术
  1.Java 1.8.0<br />
- 2.Selenium、WebDriver<br />
- 3.需要的包可以到：http://pan.baidu.com/s/1hssU8YS 下载 <br />
+ 2.Selenium 3.5.3、WebDriver 2<br />
+ 3.需要的包可以到：https://pan.baidu.com/s/1o8OFOF4 下载 <br />
 # 展望
  1.改用Maven构建项目<br />
  2.添加其他网站<br />
@@ -33,3 +33,12 @@
  5.日志分析<br />
  6.TimeSleep可以实现嵌入，非入侵代码<br />
  7.可以使用cucumber-jvm进行驱动开发<br />
+
+# 更新<br />
+2017/9/1 更新 <br />
+1.更新selenium到3.5.3，jar包更新。<br />
+2.添加opera浏览器，添加firefox加载配置启动<br />
+3.修复头条登录bug，分享bug。<br />
+
+2017/3/1 初始版<br />
+1.百度、微博、头条基本功能。<br />
