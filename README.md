@@ -37,7 +37,7 @@
 # 更新<br />
 2017/9/1 更新 <br />
 1.更新selenium到3.5.3，jar包更新。<br />
-2.添加opera浏览器，添加firefox加载配置启动<br />
+2.添加opera浏览器，添加firefox加载配置启动，实现自动翻墙<br />
 3.修复头条登录bug，分享bug。<br />
 
 2017/3/1 初始版<br />
