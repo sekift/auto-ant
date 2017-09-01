@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.ant.auto.Constants;
 import com.ant.auto.core.WebDriverOperate;
 import com.ant.auto.util.SleepUtil;
 import com.ant.auto.weibo.WeiboLogin;
@@ -31,17 +32,18 @@ public class ToutiaoLogin {
 		driver.navigate().to(toutiaoUrl);
 		SleepUtil.sleepBySecond(2, 4);
 		// 点击跳到登录
-		driver.findElement(By.cssSelector("div.nav-login > a > span")).click();
+		//driver.findElement(By.cssSelector("div.nav-login > a")).click();// > span
+		driver.findElement(By.linkText("登录")).click();
 		/**
 		 * 1再点击去到具体微博/qq登录授权登录 2使用手机或者邮箱可能需要验证码
 		 */
 		SleepUtil.sleepBySecond(2, 4);
-		if (1 == type) {
+		if (Constants.SHARE_WEIBO == type) {
 			// 微博
 			driver.findElement(By.cssSelector("li.sns.weibo-login")).click();
 			SleepUtil.sleepBySecond(5, 7);
 			driver = weiboOauth(username, password, driver);
-		} else if (2 == type) {
+		} else if (Constants.SHARE_QQ == type) {
 			// qq Firefox（49.0.2）下有问题，跳不转 原因是js加载错误
 			driver.findElement(By.cssSelector("li.sns.qq-login")).click();
 			SleepUtil.sleepBySecond(5, 7);
@@ -60,12 +62,13 @@ public class ToutiaoLogin {
 		driver.navigate().to(toutiaoUrl);
 		SleepUtil.sleepBySecond(5, 10);
 
-		// 判断真实是否已经登录
+		// 判断真实是否已经登录, 已经改变
 		String userHead = WebDriverOperate.getStringTextByCssSelector(driver,
-				"a.user-head > span");
-		if ("".equals(userHead)) {
+				"a.user-name");
+		if (null == userHead || "".equals(userHead)) { //"".equals(userHeadSpan) && 
 			logger.error("登录失败了，请检查！");
 			driver.close();
+			return null;
 		}
 		// 登录成功
 		logger.info("账号 " + userHead + " 登录成功！");
@@ -100,7 +103,8 @@ public class ToutiaoLogin {
 					.click();
 			SleepUtil.sleepBySecond(2, 7);
 
-			// 引用登录 就是去到WeiboLogin登录然后再返回扎个授权页面 暂时不提供
+			// 第一次可能有验证码
+			// 引用登录 就是去到WeiboLogin登录然后再返回这个授权页面 暂时不提供
 		}
 		return driver;
 	}

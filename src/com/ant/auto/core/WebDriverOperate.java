@@ -149,8 +149,5 @@ public class WebDriverOperate {
 		driver.navigate().forward();
 		//后退
 		driver.navigate().back();
-		
-		
-		
 	}
 }

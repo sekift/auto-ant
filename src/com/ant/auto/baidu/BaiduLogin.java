@@ -1,7 +1,6 @@
 package com.ant.auto.baidu;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.slf4j.Logger;
@@ -22,7 +21,7 @@ public class BaiduLogin {
 	// 百度登录
 	public static WebDriver baiduLogin(String username, String password,
 			WebDriver driver) {
-		driver.manage().window().setSize(new Dimension(500, 600));
+		//driver.manage().window().setSize(new Dimension(700, 800));
 		driver.navigate().to(baiduLoginUrl);
 		SleepUtil.sleepBySecond(1, 5);
 		driver.findElement(By.id("login-username")).sendKeys(username);

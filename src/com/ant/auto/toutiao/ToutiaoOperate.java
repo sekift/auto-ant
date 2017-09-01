@@ -6,6 +6,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.ant.auto.Constants;
 import com.ant.auto.core.WebDriverOperate;
 import com.ant.auto.util.SleepUtil;
 
@@ -62,7 +63,8 @@ public class ToutiaoOperate {
 		SleepUtil.sleepBySecond(1, 4);
 		// 收藏 有bug 重复点击会去掉收藏
 		/**
-		 * y-icon icon-favorite 未收藏 y-icon icon-favorite repin 收藏
+		 * y-icon icon-favorite 未收藏 
+		 * y-icon icon-favorite repin 收藏
 		 */
 		String favorite = "i.y-icon.icon-favorite";
 		try {
@@ -74,10 +76,10 @@ public class ToutiaoOperate {
 		// 评论 评论不打算开发
 
 		// 分享
-		if (1 == type) {
+		if (Constants.SHARE_WEIBO == type) {
 			// 转发到微博
 			driver = shareWeibo(driver, titleStr);
-		} else if (2 == type) {
+		} else if (Constants.SHARE_QQ == type) {
 			// 转发到朋友圈
 			driver = shareQQ(driver, titleStr);
 		}
@@ -91,9 +93,11 @@ public class ToutiaoOperate {
 		 * assertEquals("分享到微博-微博-随时随地分享身边的新鲜事儿", driver.getTitle());
 		 * driver.findElement(By.id("shareIt")).click();
 		 */
-		String shareWeibo = "div.share-box > span";
-		driver.findElement(By.cssSelector(shareWeibo)).click();
-		// 打开了新的窗口
+		//String shareWeibo = "div.share-type > span";
+		//driver.findElement(By.cssSelector(shareWeibo)).click();
+		driver.findElement(By.cssSelector("i.icon-sina")).click();
+		// 打开了新的小窗口
+		SleepUtil.sleepBySecond(1, 4);
 		// 跳转到
 		String shareWeiboTile = "分享到微博-微博-随时随地分享身边的新鲜事儿";
 		WebDriverOperate.switchToWindow(driver, shareWeiboTile);
@@ -104,6 +108,9 @@ public class ToutiaoOperate {
 		WebDriverOperate.switchToWindow(driver, titleStr);
 
 		SleepUtil.sleepBySecond(10, 4);
+		
+		//TODO 转发完应该关闭小窗口，并回到原窗口
+		
 		return driver;
 	}
 
@@ -126,6 +133,8 @@ public class ToutiaoOperate {
 		WebDriverOperate.switchToWindow(driver, titleStr);
 
 		SleepUtil.sleepBySecond(10, 4);
+		
+		//TODO 转发完应该关闭小窗口，并回到原窗口
 		return driver;
 	}
 }

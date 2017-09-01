@@ -14,8 +14,7 @@ public class WeiboSend {
 		driver.findElement(By.cssSelector("textarea.W_input")).clear();
 		SleepUtil.sleepBySecond(1, 3);
 		driver.findElement(By.cssSelector("textarea.W_input")).sendKeys(
-				"刚刚致电10086客户代表，还没等我开口，客服就问我：先生有什么可以帮到你吗？人家客气咱也不能狮子大张口"
-						+ "，就麻起胆子说：那帮我充200块话费吧。然后毫无悬念的被拒绝。。。真TM虚伪！还大公司呢，真小气！");
+				"http://www.bubbt.com/btc/pan 云车站");
 		SleepUtil.sleepBySecond(3, 5);
 		driver.findElement(By.linkText("发布")).click();
 		SleepUtil.sleepBySecond(2, 4);

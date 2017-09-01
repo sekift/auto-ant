@@ -11,8 +11,18 @@ public class Constants {
 		String gecko = "webdriver.gecko.driver";
 		// gecko地址
 		String geckoDir = "D:\\selenium\\geckodriver.exe";
-		// Firefox地址
+		// 新版Firefox地址
 		String firefoxDir = "D:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe";
+		// 旧版Firefox地址
+		String firefoxDirOld = "D:\\Program Files\\Mozilla Firefox\\firefox.exe";
+		//opera驱动
+		String opera = "webdriver.opera.driver";
+		//opera驱动地址
+		String operaDir = "D:\\selenium\\operadriver.exe";
+		//opera浏览器地址
+		//String operaBrowserDir = "D:\\Program Files\\Opera\\launcher.exe";
+		String operaBrowserDir = "D:\\Program Files\\Opera\\47.0.2631.71\\opera.exe";
+		
 	}
 
 	// 账号分割
@@ -28,5 +38,9 @@ public class Constants {
 	public static final String TARGET_STR = "target"; 
 	public static final String TOUTIAO_TARGET_STR = "toutiao_target"; 
 	public static final String QQ_STR = "qq"; 
+	
+	public static final int SHARE_WEIBO = 1;
+	public static final int SHARE_QQ = 1;
+	
 
 }

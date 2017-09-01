@@ -3,6 +3,7 @@ package com.ant.auto.toutiao;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,9 +24,12 @@ public class ToutiaoViewFollow {
 
 	public static WebDriver viewFollow(WebDriver driver, String target) {
 		// 点入我的主页
-		String userHeadSpanStr = "a.user-head > span";
+		//String userHeadSpanStr = "a.user-head > span";//
+		String userHeadSpanStr = "a.user-name";
 		String numberIStr = "em.y-number > i";
-		String userHead = WebDriverOperate.getStringTextByCssSelector(driver,
+		/*String userHead = WebDriverOperate.getStringTextByCssSelector(driver,
+				userHeadSpanStr);*/
+		WebElement userHead = WebDriverOperate.getWebElementByClassName(driver,
 				userHeadSpanStr);
 		// 跳转到关注页
 		driver.findElement(By.cssSelector(userHeadSpanStr)).click();

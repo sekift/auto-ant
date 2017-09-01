@@ -20,7 +20,7 @@ public class WeiboLogin {
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		Navigation navigation = driver.navigate();
 		navigation.to(weiboUrl);
-		SleepUtil.sleepBySecond(30, 50);
+		SleepUtil.sleepBySecond(10, 20);
 
 		driver.findElement(By.id("loginname")).clear();
 		driver.findElement(By.id("loginname")).sendKeys(username);

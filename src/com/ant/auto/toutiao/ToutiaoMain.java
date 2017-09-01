@@ -3,7 +3,6 @@ package com.ant.auto.toutiao;
 import java.util.List;
 import java.util.Map;
 
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,9 +20,9 @@ public class ToutiaoMain {
 		WebDriver driver = null;
 		int type = 1;
 		String chargeType = null;
-		if (1 == type) {
+		if ( Constants.SHARE_WEIBO == type) {
 			chargeType = Constants.WEIBO_STR;
-		} else if (2 == type) {
+		} else if ( Constants.SHARE_QQ == type) {
 			chargeType = Constants.QQ_STR;
 		}
 		List<Map<String, String>> list = AssembleProperties.loadPro(chargeType,

@@ -10,23 +10,18 @@ import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 
+import com.ant.auto.Constants;
+import com.ant.auto.core.AssembleBrowser;
+import com.ant.auto.util.SleepUtil;
+
 public class BaiduTest {
 
 	public static void main(String[] args) {
-//		System.setProperty("webdriver.chrome.driver",
-//				"D:\\selenium\\chromedriver.exe");
-//		WebDriver driver = new ChromeDriver();
-		System.setProperty("webdriver.gecko.driver", "D:\\selenium\\geckodriver.exe");
-		File pathBinary = new File("D:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe");
-		FirefoxBinary firefoxBinary = new FirefoxBinary(pathBinary);
-		FirefoxProfile firefoxProfile = new FirefoxProfile();       
-		WebDriver driver = new FirefoxDriver(firefoxBinary, firefoxProfile);
-//		WebDriver driver = new FirefoxDriver();
-//		WebDriver driver = new FirefoxDriver(capabilities);
-		driver.manage().window().setSize(new Dimension(400, 800));
+		WebDriver driver = AssembleBrowser.setFirefox(Constants.Driver.firefoxDir, true);
+		//driver.manage().window().setSize(new Dimension(400, 800));
 		
-		driver.get("http://www.baidu.com");
-		driver.manage().window().maximize();
+		driver.get("http://www.google.com");
+		//driver.manage().window().maximize();
 
 		// 输入框输入内容
 		driver.findElement(By.xpath("//*[@id='kw']")).sendKeys("selenium");
@@ -58,16 +53,7 @@ public class BaiduTest {
 		driver.findElement(By.xpath("//*[@id='kw']")).sendKeys(Keys.CONTROL,Keys.SHIFT
 				,"i");
 		
-		waitTime(5000);
-		driver.quit();
+		SleepUtil.sleepBySecond(5, 7);
+		driver.close();
 	}
-
-	static public void waitTime(int time) {
-		try {
-			Thread.sleep(time);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-	}
-
 }
