@@ -13,7 +13,7 @@ public class WeiboDownload {
 
 	public static void main(String args[]) {
 		WebDriver driver = AssembleBrowser.setFirefox(Constants.Driver.firefoxDir,false);
-		driver = WeiboLogin.weiboLogin("sekift@sina.com", "1123581321", driver);
+		driver = WeiboLogin.weiboLogin("sekift@sina.com", "xxxx", driver);
 
 		driver.navigate().to(weiboUrl);
 		SleepUtil.sleepBySecond(2, 5);
