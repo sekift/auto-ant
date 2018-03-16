@@ -5,9 +5,6 @@ import java.util.Map;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxProfile;
-import org.openqa.selenium.firefox.internal.ProfilesIni;
 
 import com.ant.auto.core.AssembleBrowser;
 import com.ant.auto.core.AssembleProperties;
@@ -24,8 +21,7 @@ public class RunMain {
 		WebDriver driver = AssembleBrowser.setOpera();
 		driver.get("https://www.baidu.com");
 		driver.findElement(By.name("wd")).sendKeys("Selenium");
-		SleepUtil.sleepBySecond(10, 20);
+		//SleepUtil.sleepBySecond(10, 20);
 		driver.quit();
-
 	}
 }

@@ -36,7 +36,8 @@ public class AssembleBrowser {
 		System.setProperty(Constants.Driver.driverChrome,
 				Constants.Driver.driverChromeDir);
 		Map<String, String> mobileEmulation = new HashMap<String, String>();
-		mobileEmulation.put("deviceName", "Google Nexus 5");// 模拟手机端
+		//20180315 修复BUG
+		mobileEmulation.put("deviceName", "iPhone 6");// 模拟手机端Google Nexus 4
 		Map<String, Object> chromeOptions = new HashMap<String, Object>();
 		chromeOptions.put("mobileEmulation", mobileEmulation);
 		DesiredCapabilities capabilities = DesiredCapabilities.chrome();

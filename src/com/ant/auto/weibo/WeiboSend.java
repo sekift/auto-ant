@@ -20,7 +20,7 @@ public class WeiboSend {
 		SleepUtil.sleepBySecond(2, 4);
 		driver.navigate()
 				.to("http://weibo.com/");
-		SleepUtil.sleepBySecond(20, 23);
-		driver.close();
+		SleepUtil.sleepBySecond(2, 5);
+		driver.quit();
 	}
 }

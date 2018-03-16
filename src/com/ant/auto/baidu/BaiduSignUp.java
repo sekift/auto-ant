@@ -43,7 +43,7 @@ public class BaiduSignUp {
 		navigation.to(tieBaUrl + signUrlPro);
 		SleepUtil.sleepBySecond(22, 44);
 		// 直接关闭
-		driver.close();
+		driver.quit();
 	}
 
 	// 获取他的tbs

@@ -16,7 +16,8 @@ public class BaiduMain {
 				Constants.BAIDU_STR, Constants.ACCOUNT_STR);
 		for (Map<String, String> map : list) {
 			driver = AssembleBrowser.setChromeAsPhone();
-			BaiduSignUp.signUpRun(map.get(Constants.USERNAME_STR),
+			//SignUp.signUpRun
+			BaiduFlower.sendFlower(map.get(Constants.USERNAME_STR),
 					map.get(Constants.PASSWORD_STR), driver);
 		}
 	}

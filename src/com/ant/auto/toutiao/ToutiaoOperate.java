@@ -103,6 +103,7 @@ public class ToutiaoOperate {
 		WebDriverOperate.switchToWindow(driver, shareWeiboTile);
 		SleepUtil.sleepBySecond(1, 4);
 		// 转发 默认点赞
+		// TODO 微博必须实名认证才继续进行，待修复BUG
 		driver.findElement(By.id("shareIt")).click();
 		SleepUtil.sleepBySecond(6, 10);
 		WebDriverOperate.switchToWindow(driver, titleStr);

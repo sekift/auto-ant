@@ -52,22 +52,28 @@ public class ToutiaoLogin {
 
 		// 登录后 1最近授权过，无需再点击授权；2 点击授权
 		// 首先判断是否已经登录
-		WebElement oauthButton = WebDriverOperate.getWebElementByClassName(
-				driver, "a.WB_btn_oauth.formbtn_01");
+		
+		//20180315 授权bug修复
+		//WebDriverOperate.getWebElementByClassName(driver, "a.WB_btn_oauth.formbtn_01");
+		WebElement oauthButton = WebDriverOperate.getWebElementByCssSelector(driver, "a.WB_btn_oauth.formbtn_01");
+
 		if (oauthButton != null) {
 			oauthButton.click();
 		}
+		
 		// 去到 授权如果是502，可能是oauth的问题，可以直接去到主页
 		SleepUtil.sleepBySecond(1, 2);
 		driver.navigate().to(toutiaoUrl);
 		SleepUtil.sleepBySecond(5, 10);
 
 		// 判断真实是否已经登录, 已经改变
+		//20180315 获取用户名bug修复
 		String userHead = WebDriverOperate.getStringTextByCssSelector(driver,
-				"a.user-name");
+				"p.name > a > span");
 		if (null == userHead || "".equals(userHead)) { //"".equals(userHeadSpan) && 
 			logger.error("登录失败了，请检查！");
-			driver.close();
+			SleepUtil.sleepBySecond(20, 30);
+			driver.quit();
 			return null;
 		}
 		// 登录成功

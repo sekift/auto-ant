@@ -1,14 +1,8 @@
 package com.ant.auto.baidu;
 
-import java.io.File;
-
 import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxBinary;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxProfile;
 
 import com.ant.auto.Constants;
 import com.ant.auto.core.AssembleBrowser;
@@ -54,6 +48,6 @@ public class BaiduTest {
 				,"i");
 		
 		SleepUtil.sleepBySecond(5, 7);
-		driver.close();
+		driver.quit();
 	}
 }

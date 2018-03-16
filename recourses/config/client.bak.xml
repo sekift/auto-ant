@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<properties>
+	<baidu>
+      <account>xxx----xxx</account>
+      <account>xxx----xxx</account>
+    </baidu>
+    
+    <weibo>
+      <account>xxx----xxx</account>
+      <account>xxx----xxx</account>
+    </weibo>
+    
+    <qq>
+        <account>xxx----xxxf</account>
+        <account>xxx----xxxf</account>
+    </qq>
+    
+    <toutiao_target>
+        <account>xxxf</account>
+        <account>xxxf</account>
+    </toutiao_target>
+</properties>

@@ -32,7 +32,9 @@ public class WeiboLogin {
 				By.xpath("//div[@id='pl_login_form']/div/div[3]/div[6]/a/span"))
 				.click();
 		// assertEquals("我的首页 微博-随时随地发现新鲜事", driver.getTitle());
-		if ("我的首页 微博-随时随地发现新鲜事".equals(driver.getTitle())) {
+		System.out.println(driver.getTitle());
+		if ("微博-随时随地发现新鲜事".equals(driver.getTitle())
+				|| "我的首页 微博-随时随地发现新鲜事".equals(driver.getTitle())) {
 			logger.info("weibo登录成功，username=" + username);
 		} else if ("兴趣推荐 微博-随时随地发现新鲜事".equals(driver.getTitle())) {
 			// 推荐需要点击 进入微博

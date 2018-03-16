@@ -25,7 +25,7 @@ public class ToutiaoViewFollow {
 	public static WebDriver viewFollow(WebDriver driver, String target) {
 		// 点入我的主页
 		//String userHeadSpanStr = "a.user-head > span";//
-		String userHeadSpanStr = "a.user-name";
+		String userHeadSpanStr = "p.name > a > span";
 		String numberIStr = "em.y-number > i";
 		/*String userHead = WebDriverOperate.getStringTextByCssSelector(driver,
 				userHeadSpanStr);*/
