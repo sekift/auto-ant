@@ -41,7 +41,7 @@ public class BaiduFlower {
 			// 滚动
 			((JavascriptExecutor) driver).executeScript("scrollTo(0, 1200)");
 
-			// 点击送花，每天可以送3次，只能送一个人，所以下面是安需分配给每一个小偶像
+			// 点击送花，每天一共只可以送3次，所以下面是安需分配给每一个小偶像
 			WebElement element = driver.findElement(By.id("J-send"));
 			try {
 				int maxCount = Integer.valueOf(map.get(Constants.PASSWORD_STR));
