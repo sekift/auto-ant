@@ -38,6 +38,8 @@ public class Constants {
 	public static final String TARGET_STR = "target"; 
 	public static final String TOUTIAO_TARGET_STR = "toutiao_target"; 
 	public static final String QQ_STR = "qq"; 
+	public static final String BAIDU_FLOWER_STR = "baidu_flower"; 
+	public static final String URL_STR = "url"; 
 	
 	public static final int SHARE_WEIBO = 1;
 	public static final int SHARE_QQ = 1;

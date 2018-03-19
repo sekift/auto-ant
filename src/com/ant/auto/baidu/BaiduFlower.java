@@ -1,5 +1,8 @@
 package com.ant.auto.baidu;
 
+import java.util.List;
+import java.util.Map;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -9,6 +12,8 @@ import org.openqa.selenium.WebElement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.ant.auto.Constants;
+import com.ant.auto.core.AssembleProperties;
 import com.ant.auto.util.SleepUtil;
 
 /**
@@ -27,23 +32,27 @@ public class BaiduFlower {
 		WebDriver driver = BaiduLogin.baiduLogin(username, password, driverPre);
 
 		Navigation navigation = driver.navigate();
-		// navigation.to("https://baike.baidu.com/item/%E9%99%88%E6%80%9D/1304195");//PC
-		navigation
-				.to("https://wapbaike.baidu.com/item/%E9%99%88%E6%80%9D/1304195");// 手机端
-		SleepUtil.sleepBySecond(1, 5);
+		// 多个对象
+		List<Map<String, String>> list = AssembleProperties.loadPro(
+				Constants.BAIDU_FLOWER_STR, Constants.URL_STR);
+		for (Map<String, String> map : list) {
+			navigation.to(map.get(Constants.USERNAME_STR));// 手机端
+			SleepUtil.sleepBySecond(1, 5);
+			// 滚动
+			((JavascriptExecutor) driver).executeScript("scrollTo(0, 1200)");
 
-		// 滚动
-		((JavascriptExecutor) driver).executeScript("scrollTo(0, 1200)");
-
-		// 点击送花，每天可以送3次
-		WebElement element = driver.findElement(By.id("J-send"));
-		try {
-			for (int i = 0; i < 3; i++) {
-				SleepUtil.sleepBySecond(1, 2);
-				element.click();
+			// 点击送花，每天可以送3次，只能送一个人，所以下面是安需分配给每一个小偶像
+			WebElement element = driver.findElement(By.id("J-send"));
+			try {
+				int maxCount = Integer.valueOf(map.get(Constants.PASSWORD_STR));
+				for (int i = 0; i < maxCount; i++) {
+					SleepUtil.sleepBySecond(1, 2);
+					element.click();
+				}
+			} catch (WebDriverException e) {
+				logger.error("出错了：" + e.getMessage());
 			}
-		} catch (WebDriverException e) {
-			logger.error("出错了：" + e.getMessage());
+			SleepUtil.sleepBySecond(2, 5);
 		}
 		SleepUtil.sleepBySecond(3, 8);
 		// 直接关闭

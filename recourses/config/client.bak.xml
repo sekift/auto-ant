@@ -2,22 +2,26 @@
 
 <properties>
 	<baidu>
-      <account>xxx----xxx</account>
-      <account>xxx----xxx</account>
-    </baidu>
-    
-    <weibo>
-      <account>xxx----xxx</account>
-      <account>xxx----xxx</account>
-    </weibo>
-    
-    <qq>
-        <account>xxx----xxxf</account>
-        <account>xxx----xxxf</account>
-    </qq>
-    
-    <toutiao_target>
-        <account>xxxf</account>
-        <account>xxxf</account>
-    </toutiao_target>
+		<account>xxx----xxx</account>
+		<account>xxx----xxx</account>
+	</baidu>
+
+	<weibo>
+		<account>xxx----xxx</account>
+		<account>xxx----xxx</account>
+	</weibo>
+
+	<qq>
+		<account>xxx----xxxf</account>
+		<account>xxx----xxxf</account>
+	</qq>
+
+	<toutiao_target>
+		<account>尴尬癌专治</account>
+	</toutiao_target>
+
+	<baidu_flower>
+		<url>https://wapbaike.baidu.com/item/%E9%99%88%E6%80%9D/1304195----3</url>
+		<url>https://wapbaike.baidu.com/item/%E8%8E%AB%E5%AF%92/8560250----0</url>
+	</baidu_flower>
 </properties>

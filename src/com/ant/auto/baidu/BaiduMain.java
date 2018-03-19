@@ -20,5 +20,6 @@ public class BaiduMain {
 			BaiduFlower.sendFlower(map.get(Constants.USERNAME_STR),
 					map.get(Constants.PASSWORD_STR), driver);
 		}
+		driver.quit();
 	}
 }
