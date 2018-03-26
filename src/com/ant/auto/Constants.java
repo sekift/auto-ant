@@ -20,7 +20,6 @@ public class Constants {
 		//opera驱动地址
 		String operaDir = "D:\\selenium\\operadriver.exe";
 		//opera浏览器地址
-		//String operaBrowserDir = "D:\\Program Files\\Opera\\launcher.exe";
 		String operaBrowserDir = "D:\\Program Files\\Opera\\51.0.2830.55\\opera.exe";
 		
 	}
