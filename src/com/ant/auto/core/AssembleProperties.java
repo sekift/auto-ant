@@ -20,8 +20,26 @@ import com.ant.auto.util.ConfigUtil;
 public class AssembleProperties {
 	private static final Logger logger = LoggerFactory
 			.getLogger(AssembleProperties.class);
-
-	public static List<Map<String, String>> loadPro(String configValue,
+	/**
+	 * 多个map类型
+	 */
+	public static Map<String, String> loadProMap(String configValue){
+		Map map = (Map) ConfigUtil.getConfigValue(configValue);
+		return map;
+	}
+	
+	public static Map<String, Map<String, String>> loadProMapMap(String configValue){
+		Map map = (Map) ConfigUtil.getConfigValue(configValue);
+		return map;
+	}
+	
+	/**
+	 * 账号、账号密码类型
+	 * @param configValue
+	 * @param value
+	 * @return
+	 */
+	public static List<Map<String, String>> loadProString(String configValue,
 			String value) {
 		Map map = (Map) ConfigUtil.getConfigValue(configValue);
 		List<Map<String, String>> list = new ArrayList<Map<String, String>>();

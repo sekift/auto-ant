@@ -3,8 +3,7 @@ package com.ant.auto.weibo;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import com.ant.auto.Constants;
-import com.ant.auto.core.AssembleBrowser;
+import com.ant.auto.core.AssembleBrowserFactory;
 import com.ant.auto.util.SleepUtil;
 
 public class WeiboDownload {
@@ -12,7 +11,7 @@ public class WeiboDownload {
 	private static final String weiboUrl = "http://vdisk.weibo.com/s/dWVaAJ4sP93L?category_id=0";
 
 	public static void main(String args[]) {
-		WebDriver driver = AssembleBrowser.setFirefox(Constants.Driver.firefoxDir,false);
+		WebDriver driver = AssembleBrowserFactory.getBrower();
 		driver = WeiboLogin.weiboLogin("sekift@sina.com", "xxxx", driver);
 
 		driver.navigate().to(weiboUrl);

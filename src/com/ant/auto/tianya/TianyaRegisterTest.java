@@ -3,13 +3,14 @@ package com.ant.auto.tianya;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import com.ant.auto.Constants;
 import com.ant.auto.core.AssembleBrowser;
 import com.ant.auto.util.SendMessageTool;
 import com.ant.auto.util.SleepUtil;
 
 public class TianyaRegisterTest {
 	public static void main(String[] args) {
-		WebDriver driver = AssembleBrowser.setChrome();
+		WebDriver driver = AssembleBrowser.setChrome(Constants.Driver.driverChromeDir);
 
 		String baseUrl = "https://passport.tianya.cn";
 		driver.get(baseUrl

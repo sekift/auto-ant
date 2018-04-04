@@ -33,7 +33,7 @@ public class BaiduFlower {
 
 		Navigation navigation = driver.navigate();
 		// 多个对象
-		List<Map<String, String>> list = AssembleProperties.loadPro(
+		List<Map<String, String>> list = AssembleProperties.loadProString(
 				Constants.BAIDU_FLOWER_STR, Constants.URL_STR);
 		for (Map<String, String> map : list) {
 			navigation.to(map.get(Constants.USERNAME_STR));// 手机端

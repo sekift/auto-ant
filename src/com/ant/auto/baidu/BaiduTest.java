@@ -4,14 +4,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
-import com.ant.auto.Constants;
-import com.ant.auto.core.AssembleBrowser;
+import com.ant.auto.core.AssembleBrowserFactory;
 import com.ant.auto.util.SleepUtil;
 
 public class BaiduTest {
 
 	public static void main(String[] args) {
-		WebDriver driver = AssembleBrowser.setFirefox(Constants.Driver.firefoxDir, true);
+		WebDriver driver = AssembleBrowserFactory.getBrower();
 		//driver.manage().window().setSize(new Dimension(400, 800));
 		
 		driver.get("http://www.google.com");

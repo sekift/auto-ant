@@ -24,20 +24,18 @@ import com.ant.auto.Constants;
  */
 public class AssembleBrowser {
 	// 装配chrome浏览器
-	public static WebDriver setChrome() {
-		System.setProperty(Constants.Driver.driverChrome,
-				Constants.Driver.driverChromeDir);
+	public static WebDriver setChrome(String browserDir) {
+		System.setProperty(Constants.Driver.driverChrome, browserDir);
 		WebDriver driver = new ChromeDriver();
 		return driver;
 	}
 
 	// 装配chrome浏览器
-	public static WebDriver setChromeAsPhone() {
-		System.setProperty(Constants.Driver.driverChrome,
-				Constants.Driver.driverChromeDir);
+	public static WebDriver setChromeAsPhone(String browserDir, String mobile) {
+		System.setProperty(Constants.Driver.driverChrome, browserDir);
 		Map<String, String> mobileEmulation = new HashMap<String, String>();
 		//20180315 修复BUG
-		mobileEmulation.put("deviceName", "iPhone 6");// 模拟手机端Google Nexus 4
+		mobileEmulation.put("deviceName", mobile);// 模拟手机端
 		Map<String, Object> chromeOptions = new HashMap<String, Object>();
 		chromeOptions.put("mobileEmulation", mobileEmulation);
 		DesiredCapabilities capabilities = DesiredCapabilities.chrome();
@@ -47,24 +45,25 @@ public class AssembleBrowser {
 	}
 
 	// 装配firefox浏览器 - ZenMeta自动翻墙
-	public static WebDriver setFirefox(String newOrOld, boolean defaultConf) {
-		System.setProperty(Constants.Driver.gecko, Constants.Driver.geckoDir);
-		File pathBinary = new File(newOrOld);
+	public static WebDriver setFirefox(String dir, String browserDir, boolean defaultConf) {
+		System.setProperty(Constants.Driver.gecko, dir);
+		File pathBinary = new File(browserDir);
 		FirefoxBinary firefoxBinary = new FirefoxBinary(pathBinary);
 		FirefoxProfile firefoxProfile = new FirefoxProfile();
 		if (defaultConf) {
 			ProfilesIni pi = new ProfilesIni();
 			firefoxProfile = pi.getProfile("default");
 		}
+		@SuppressWarnings("deprecation")
 		WebDriver driver = new FirefoxDriver(firefoxBinary, firefoxProfile);
 		return driver;
 	}
 
-	// 装配opera浏览器 - ZenMeta自动翻墙（未完成）
-	public static WebDriver setOpera() {
-		System.setProperty(Constants.Driver.opera, Constants.Driver.operaDir);
+	// 装配opera浏览器
+	public static WebDriver setOpera(String dir, String browserDir) {
+		System.setProperty(Constants.Driver.opera, dir);
 		ChromeOptions options = new ChromeOptions();
-		options.setBinary(Constants.Driver.operaBrowserDir);
+		options.setBinary(browserDir);
 		DesiredCapabilities capabilities = new DesiredCapabilities();
 		capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 		OperaDriver browser = new OperaDriver(capabilities);

@@ -5,12 +5,13 @@ import org.jsoup.nodes.Document;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import com.ant.auto.Constants;
 import com.ant.auto.core.AssembleBrowser;
 import com.ant.auto.util.SleepUtil;
 
 public class Test {
 	public static void main(String[] args) {
-		WebDriver driver = AssembleBrowser.setChrome();
+		WebDriver driver = AssembleBrowser.setChrome(Constants.Driver.driverChromeDir);
 		String baseUrl = "http://192.168.65.97";
 		for (int i = 0; i < 20; i++) {
 			long time = System.currentTimeMillis();

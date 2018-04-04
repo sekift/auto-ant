@@ -25,12 +25,12 @@ public class ToutiaoMain {
 		} else if ( Constants.SHARE_QQ == type) {
 			chargeType = Constants.QQ_STR;
 		}
-		List<Map<String, String>> list = AssembleProperties.loadPro(chargeType,
+		List<Map<String, String>> list = AssembleProperties.loadProString(chargeType,
 				Constants.ACCOUNT_STR);
-		List<Map<String, String>> targetList = AssembleProperties.loadPro(
+		List<Map<String, String>> targetList = AssembleProperties.loadProString(
 				Constants.TOUTIAO_TARGET_STR, Constants.ACCOUNT_STR);
 		for (Map<String, String> map : list) {
-			driver = AssembleBrowser.setChrome();
+			driver = AssembleBrowser.setChrome(Constants.Driver.driverChromeDir);
 			//尺寸不能缩小，要不看不见
 			driver = ToutiaoLogin.ttLogin(map.get(Constants.USERNAME_STR),
 					map.get(Constants.PASSWORD_STR), driver, type);

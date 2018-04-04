@@ -11,11 +11,10 @@ import org.slf4j.LoggerFactory;
 import com.ant.auto.Constants;
 import com.ant.auto.core.WebDriverOperate;
 import com.ant.auto.util.SleepUtil;
-import com.ant.auto.weibo.WeiboLogin;
 
 public class ToutiaoLogin {
 	private static final Logger logger = LoggerFactory
-			.getLogger(WeiboLogin.class);
+			.getLogger(ToutiaoLogin.class);
 	private static final String toutiaoUrl = "http://www.toutiao.com";
 
 	/**
