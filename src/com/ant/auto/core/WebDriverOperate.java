@@ -28,50 +28,27 @@ public class WebDriverOperate {
 	 * @param windowTitle
 	 * @return
 	 */
-	public static WebDriver switchToWindow(WebDriver driver, String windowTitle) {
+	public static WebDriver switchToWindow(WebDriver driver, String windowTitle, boolean full) {
 		try {
 			String currentHandle = driver.getWindowHandle();
 			Set<String> handles = driver.getWindowHandles();
 			for (String s : handles) {
-				if (s.equals(currentHandle))
+				if (s.equals(currentHandle)) {
 					continue;
-				else {
+				} else {
 					driver.switchTo().window(s);
-					if (driver.getTitle().contains(windowTitle)) {
+					boolean t = false;
+					if(full){
+						t = driver.getTitle().equals(windowTitle);
+					} else {
+						t = driver.getTitle().contains(windowTitle);
+					}
+					if (t) {
 						logger.info("转到窗口: " + windowTitle + " 成功！");
 						break;
-					} else
+					} else {
 						continue;
-				}
-			}
-		} catch (NoSuchWindowException e) {
-			logger.error("窗口: " + windowTitle + " 未能找到！", e.fillInStackTrace());
-		}
-		return driver;
-	}
-
-	/**
-	 * 根据title切换窗口--全匹配
-	 * 
-	 * @param driver
-	 * @param windowTitle
-	 * @return
-	 */
-	public static WebDriver switchToWindowFull(WebDriver driver,
-			String windowTitle) {
-		try {
-			String currentHandle = driver.getWindowHandle();
-			Set<String> handles = driver.getWindowHandles();
-			for (String s : handles) {
-				if (s.equals(currentHandle))
-					continue;
-				else {
-					driver.switchTo().window(s);
-					if (driver.getTitle().equals(windowTitle)) {
-						logger.info("转到窗口: " + windowTitle + " 成功！");
-						break;
-					} else
-						continue;
+					}
 				}
 			}
 		} catch (NoSuchWindowException e) {
@@ -99,57 +76,55 @@ public class WebDriverOperate {
 		}
 		return null;
 	}
-
-	// 获取数据
-	public static String getStringTextByCssSelector(WebDriver driver,
-			String element) {
-		String result = "";
-		try {
-			result = driver.findElement(By.cssSelector(element)).getText();
-		} catch (Exception e) {
-			logger.warn("页面 " + driver.getCurrentUrl() + " ,获取元素 " + element
-					+ " 不存在，请注意！");
-		}
-		return result;
-	}
-
-	// 获取数据
-	public static String getStringTextByPath(WebDriver driver, String element) {
-		String result = "";
-		try {
-			result = driver.findElement(By.xpath(element)).getText();
-		} catch (Exception e) {
-			logger.warn("页面 " + driver.getCurrentUrl() + " ,获取元素 " + element
-					+ " 不存在，请注意！");
-		}
-		return result;
-	}
-
-	// 获取数据
-	public static WebElement getWebElementByClassName(WebDriver driver,
-			String element) {
+	
+	/**
+	 * 获取web元素
+	 * 
+	 * @param driver
+	 * @param locatorType
+	 * @param locatorValue
+	 * @return
+	 */
+	public static WebElement getWebElement(WebDriver driver,
+			String locatorType, String locatorValue) {
 		WebElement result = null;
 		try {
-			result = driver.findElement(By.className(element));
+			result = driver.findElement(getObjectLocator(locatorType,
+					locatorValue));
 		} catch (Exception e) {
-			logger.warn("页面 " + driver.getCurrentUrl() + " ,获取元素 " + element
-					+ ",不存在，请注意！");
+			logger.warn("页面 " + driver.getCurrentUrl() + ",使用" + locatorType
+					+ ",获取元素 " + locatorValue + ",不存在，请注意！");
 		}
 		return result;
 	}
 
-	// 获取数据
-	public static WebElement getWebElementByCssSelector(WebDriver driver,
-			String element) {
-		WebElement result = null;
-		try {
-			result = driver.findElement(By
-					.cssSelector("a.WB_btn_oauth.formbtn_01"));
-		} catch (Exception e) {
-			logger.warn("页面 " + driver.getCurrentUrl() + " ,获取元素 " + element
-					+ ",不存在，请注意！");
+	/**
+	 * 根据对象库中的Value来获取By的值
+	 * 
+	 * @param locatorType
+	 * @param locatorValue
+	 * @return
+	 */
+	private static By getObjectLocator(String locatorType, String locatorValue) {
+		By locator = null;
+		if (locatorType.contains(WebElementType.Id.toString())) {
+			locator = By.id(locatorValue);
+		} else if (locatorType.contains(WebElementType.Name.toString())) {
+			locator = By.name(locatorValue);
+		} else if (locatorType.contains(WebElementType.Class.toString())) {
+			locator = By.className(locatorValue);
+		} else if (locatorType.contains(WebElementType.Xpath.toString())) {
+			locator = By.xpath(locatorValue);
+		} else if (locatorType.contains(WebElementType.CssSelector.toString())) {
+			locator = By.cssSelector(locatorValue);
+		} else if (locatorType.contains(WebElementType.LinkText.toString())) {
+			locator = By.linkText(locatorValue);
+		} else if (locatorType.contains(WebElementType.PartialLinkText.toString())) {
+			locator = By.partialLinkText(locatorValue);
+		} else if (locatorType.contains(WebElementType.Tag.toString())) {
+			locator = By.tagName(locatorValue);
 		}
-		return result;
+		return locator;
 	}
 
 	public void fullMethod() {

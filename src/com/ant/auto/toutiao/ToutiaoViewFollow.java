@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.ant.auto.core.WebDriverOperate;
+import com.ant.auto.core.WebElementType;
 import com.ant.auto.util.SleepUtil;
 
 /**
@@ -29,14 +30,14 @@ public class ToutiaoViewFollow {
 		String numberIStr = "em.y-number > i";
 		/*String userHead = WebDriverOperate.getStringTextByCssSelector(driver,
 				userHeadSpanStr);*/
-		WebElement userHead = WebDriverOperate.getWebElementByClassName(driver,
-				userHeadSpanStr);
+		WebElement userHead = WebDriverOperate.getWebElement(driver,
+				WebElementType.Class.toString(), userHeadSpanStr);
 		// 跳转到关注页
 		driver.findElement(By.cssSelector(userHeadSpanStr)).click();
 		SleepUtil.sleepBySecond(1, 3);
 
 		// 切换到新打开的窗口
-		driver = WebDriverOperate.switchToWindow(driver, userHead + titlePro);
+		driver = WebDriverOperate.switchToWindow(driver, userHead + titlePro, false);
 		SleepUtil.sleepBySecond(1, 3);
 		String number = driver.findElement(By.cssSelector(numberIStr))
 				.getText();
@@ -77,7 +78,7 @@ public class ToutiaoViewFollow {
 		driver.findElement(By.xpath(pathPre + targetNum + pathPro)).click();
 
 		// 切换
-		driver = WebDriverOperate.switchToWindow(driver, target + titlePro);
+		driver = WebDriverOperate.switchToWindow(driver, target + titlePro, false);
 		return driver;
 	}
 
@@ -100,7 +101,7 @@ public class ToutiaoViewFollow {
 		driver.findElement(By.name("keyword")).sendKeys(Keys.ENTER);
 		SleepUtil.sleepBySecond(1, 2);
 		//转到
-		driver = WebDriverOperate.switchToWindow(driver, searchTitle);
+		driver = WebDriverOperate.switchToWindow(driver, searchTitle, false);
 		SleepUtil.sleepBySecond(3, 5);
 		driver.findElement(By.cssSelector("div.subscribe.subscribe-active"))
 				.click();
@@ -109,7 +110,7 @@ public class ToutiaoViewFollow {
 		// driver.findElement(By.cssSelector("div.subscribe.")).click();
 		// 跳回去并刷新
 		SleepUtil.sleepBySecond(1, 3);
-		driver = WebDriverOperate.switchToWindow(driver, targetTitle);
+		driver = WebDriverOperate.switchToWindow(driver, targetTitle, false);
 		driver.navigate().refresh();
 		SleepUtil.sleepBySecond(1, 3);
 		return driver;

@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 
 import com.ant.auto.Constants;
 import com.ant.auto.core.WebDriverOperate;
+import com.ant.auto.core.WebElementType;
 import com.ant.auto.util.SleepUtil;
 
 /**
@@ -27,12 +28,12 @@ public class ToutiaoOperate {
 		SleepUtil.sleepBySecond(1, 4);
 		String firstArticle = "//div/ul/li[1]/div/div/div/div/a";
 		// 文章的title
-		String titleStr = WebDriverOperate.getStringTextByPath(driver,
-				firstArticle);
+		String titleStr = WebDriverOperate.getWebElement(driver,
+				WebElementType.Xpath.toString(), firstArticle).getText();
 		driver.findElement(By.xpath(firstArticle)).click();
 		SleepUtil.sleepBySecond(1, 4);
 		// 切换到第一篇文章
-		WebDriverOperate.switchToWindow(driver, titleStr);
+		WebDriverOperate.switchToWindow(driver, titleStr,false);
 		// 左右切换 driver.findElement(By.cssSelector("ul.tab.tab-1 > li")).click();
 		// 暂时用不到
 
@@ -44,8 +45,8 @@ public class ToutiaoOperate {
 		boolean isFollow = false;
 		if (isFollow) {
 			String unsubscribe = "div.article-unsubscribe.left-arrow > span";
-			String followed = WebDriverOperate.getStringTextByCssSelector(
-					driver, unsubscribe);
+			String followed = WebDriverOperate.getWebElement(
+					driver,WebElementType.CssSelector.toString() , unsubscribe).getText();
 			if (!"".equals(followed)) {
 				driver.findElement(By.cssSelector(unsubscribe)).click();
 			}
@@ -100,13 +101,13 @@ public class ToutiaoOperate {
 		SleepUtil.sleepBySecond(1, 4);
 		// 跳转到
 		String shareWeiboTile = "分享到微博-微博-随时随地分享身边的新鲜事儿";
-		WebDriverOperate.switchToWindow(driver, shareWeiboTile);
+		WebDriverOperate.switchToWindow(driver, shareWeiboTile, false);
 		SleepUtil.sleepBySecond(1, 4);
 		// 转发 默认点赞
 		// TODO 微博必须实名认证才继续进行，待修复BUG
 		driver.findElement(By.id("shareIt")).click();
 		SleepUtil.sleepBySecond(6, 10);
-		WebDriverOperate.switchToWindow(driver, titleStr);
+		WebDriverOperate.switchToWindow(driver, titleStr, false);
 
 		SleepUtil.sleepBySecond(10, 4);
 		
@@ -126,12 +127,12 @@ public class ToutiaoOperate {
 		// 打开了新的窗口
 		// 跳转到
 		String shareQQTile = "分享到QQ空间和朋友网";
-		WebDriverOperate.switchToWindow(driver, shareQQTile);
+		WebDriverOperate.switchToWindow(driver, shareQQTile, false);
 		SleepUtil.sleepBySecond(1, 4);
 		// 转发
 		driver.findElement(By.cssSelector("span.btn_s1_h28_r")).click();
 		SleepUtil.sleepBySecond(6, 10);
-		WebDriverOperate.switchToWindow(driver, titleStr);
+		WebDriverOperate.switchToWindow(driver, titleStr, false);
 
 		SleepUtil.sleepBySecond(10, 4);
 		

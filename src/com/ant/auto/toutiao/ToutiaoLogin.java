@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 
 import com.ant.auto.Constants;
 import com.ant.auto.core.WebDriverOperate;
+import com.ant.auto.core.WebElementType;
 import com.ant.auto.util.SleepUtil;
 
 public class ToutiaoLogin {
@@ -54,8 +55,9 @@ public class ToutiaoLogin {
 		
 		//20180315 授权bug修复
 		//WebDriverOperate.getWebElementByClassName(driver, "a.WB_btn_oauth.formbtn_01");
-		WebElement oauthButton = WebDriverOperate.getWebElementByCssSelector(driver, "a.WB_btn_oauth.formbtn_01");
-
+		//WebElement oauthButton = WebDriverOperate.getWebElementByCssSelector(driver, "a.WB_btn_oauth.formbtn_01");
+        WebElement oauthButton = WebDriverOperate.getWebElement(driver, 
+        		WebElementType.CssSelector.toString(), "a.WB_btn_oauth.formbtn_01");
 		if (oauthButton != null) {
 			oauthButton.click();
 		}
@@ -67,8 +69,9 @@ public class ToutiaoLogin {
 
 		// 判断真实是否已经登录, 已经改变
 		//20180315 获取用户名bug修复
-		String userHead = WebDriverOperate.getStringTextByCssSelector(driver,
-				"p.name > a > span");
+		//String userHead = WebDriverOperate.getStringTextByCssSelector(driver,"p.name > a > span");
+		String userHead = WebDriverOperate.getWebElement(driver,
+				WebElementType.CssSelector.toString(),"p.name > a > span").getText();
 		if (null == userHead || "".equals(userHead)) { //"".equals(userHeadSpan) && 
 			logger.error("登录失败了，请检查！");
 			SleepUtil.sleepBySecond(20, 30);
@@ -91,8 +94,9 @@ public class ToutiaoLogin {
 	private static WebDriver weiboOauth(String username, String password,
 			WebDriver driver) {
 		// 首先判断是否已经登录
-		WebElement webEle = WebDriverOperate.getWebElementByClassName(driver,
-				"account_name");
+		//WebElement webEle = WebDriverOperate.getWebElementByClassName(driver,"account_name");
+		WebElement webEle = WebDriverOperate.getWebElement(driver, 
+				WebElementType.Class.toString(), "account_name");
 
 		// 未登录，有两种选择 1去WeiboLogin登录再返回授权界面，
 		// 2直接在本页登录（如果是本页登录需要验证码那么去引用登录）
@@ -125,8 +129,8 @@ public class ToutiaoLogin {
 	private static WebDriver qqOauth(String username, String password,
 			WebDriver driver) {
 		// 首先判断是否已经登录
-		WebElement webEle = WebDriverOperate.getWebElementByClassName(driver,
-				"account_name");
+		WebElement webEle = WebDriverOperate.getWebElement(driver,
+				WebElementType.Class.toString(), "account_name");
 
 		if (webEle == null) {
 			driver.findElement(By.id("u")).clear();
