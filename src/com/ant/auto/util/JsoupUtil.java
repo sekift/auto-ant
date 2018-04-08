@@ -2,6 +2,8 @@ package com.ant.auto.util;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -48,7 +50,8 @@ public class JsoupUtil {
 	public static Document getDocByConnectIgnoreContent(String url) {
 		Document doc = null;
 		try {
-			doc = Jsoup.connect(url).timeout(connectTime).ignoreContentType(true).get();
+			doc = Jsoup.connect(url).timeout(connectTime)
+					.ignoreContentType(true).get();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -65,10 +68,38 @@ public class JsoupUtil {
 		}
 		return doc;
 	}
-	
-	public static void main(String args[]){
-		//
-		Document doc = getDocByParse("https://tieba.baidu.com/?page=like");
-		System.out.println(doc.getElementById("likeforumwraper"));
+
+	public static void main(String args[]) {
 	}
+
+	/**
+	 * 获取URL具体参数
+	 * 
+	 * @param url
+	 * @return
+	 */
+	public static Map<String, String> toMap(String url) {
+		Map<String, String> map = null;
+		// 首先获取参数
+		try {
+			URL u = new URL(url);
+			url = u.getQuery();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		if (url != null && url.indexOf("=") > -1) {
+			map = new HashMap<String, String>();
+			String[] arrTemp = url.split("&");
+			for (String str : arrTemp) {
+				String[] qs = str.split("=");
+				map.put(qs[0], qs[1]);
+			}
+		}
+		return map;
+	}
+
+	public static String getQueryString(String url, String name) {
+		return toMap(url).get(name);
+	}
+
 }

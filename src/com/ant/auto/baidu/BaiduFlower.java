@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 
 import com.ant.auto.Constants;
 import com.ant.auto.core.AssembleProperties;
+import com.ant.auto.util.JsoupUtil;
 import com.ant.auto.util.SleepUtil;
 
 /**
@@ -39,18 +40,26 @@ public class BaiduFlower {
 			navigation.to(map.get(Constants.USERNAME_STR));// 手机端
 			SleepUtil.sleepBySecond(1, 5);
 			// 滚动
-			((JavascriptExecutor) driver).executeScript("scrollTo(0, 1200)");
-
-			// 点击送花，每天一共只可以送3次，所以下面是安需分配给每一个小偶像
-			WebElement element = driver.findElement(By.id("J-send"));
-			try {
-				int maxCount = Integer.valueOf(map.get(Constants.PASSWORD_STR));
-				for (int i = 0; i < maxCount; i++) {
-					SleepUtil.sleepBySecond(1, 2);
-					element.click();
+			// 2018.4.5 改版已经不用滚动,改成跳转到页面后再点了
+			// ((JavascriptExecutor) driver).executeScript("scrollTo(0, 1200)");
+			int maxCount = Integer.valueOf(map.get(Constants.PASSWORD_STR));
+			if (maxCount > 0) {// 大于0才执行
+				driver.findElement(By.id("J-send-flower")).click();
+				// 点击送花，每天一共只可以送3次，所以下面是按需分配给每一个小偶像
+				// 获取lemmaid
+				String lemmaId = JsoupUtil.getQueryString(
+						driver.getCurrentUrl(), "lemmaId");
+				// 获取元素
+				WebElement element = driver.findElement(By
+						.xpath("//*[@data-lemmaid='" + lemmaId + "']"));
+				try {
+					for (int i = 0; i < maxCount; i++) {
+						SleepUtil.sleepBySecond(1, 2);
+						element.click();
+					}
+				} catch (WebDriverException e) {
+					logger.error("出错了：" + e.getMessage());
 				}
-			} catch (WebDriverException e) {
-				logger.error("出错了：" + e.getMessage());
 			}
 			SleepUtil.sleepBySecond(2, 5);
 		}
