@@ -2,6 +2,9 @@
 自动蚂蚁，自动游走者，乃最大者。
 
 # 更新<br />
+2018/04/17 更新 <br />
+1.升级依赖的jar包。<br />
+
 2018/04/12 更新 <br />
 1.修复百度登录入口链接，以跳过登录检查。<br />
 
@@ -59,7 +62,7 @@
 # 技术
  1.Java 1.8.0<br />
  2.Selenium 3.5.3、WebDriver 2<br />
- 3.需要的包可以到：https://pan.baidu.com/s/1o8OFOF4 下载 <br />
+ 3.需要的包可以到：https://pan.baidu.com/s/15aogCxrJXWJ00oFwL1r2iw 下载 <br />
 # 展望
  1.改用Maven构建项目<br />
  2.添加其他网站<br />
