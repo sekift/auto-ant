@@ -89,7 +89,15 @@ public class JsoupUtil {
 		}
 		if (url != null && url.indexOf("=") > -1) {
 			map = new HashMap<String, String>();
+			//过滤否则出错
+			if(url.startsWith("&")){
+				url = url.substring(1);
+			}
+			if(url.endsWith("&")){
+				url = url.substring(0, url.length() - 1);
+			}
 			String[] arrTemp = url.split("&");
+			System.out.println(arrTemp[0]);
 			for (String str : arrTemp) {
 				String[] qs = str.split("=");
 				map.put(qs[0], qs[1]);
@@ -99,7 +107,12 @@ public class JsoupUtil {
 	}
 
 	public static String getQueryString(String url, String name) {
-		return toMap(url).get(name);
+		String result = null;
+		Map<String, String> map = toMap(url);
+		if(null != map){
+			result = map.get(name);
+		}
+		return result;
 	}
 
 }

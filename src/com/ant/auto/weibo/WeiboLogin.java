@@ -17,7 +17,7 @@ public class WeiboLogin {
 	
 	//weibo登录
 	public static WebDriver weiboLogin(String username, String password, WebDriver driver) {
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		Navigation navigation = driver.navigate();
 		navigation.to(weiboUrl);
 		SleepUtil.sleepBySecond(10, 20);
