@@ -58,7 +58,7 @@ public class Constants {
 	public static final String OPERA_BROWSER_DIR = "opera_browser_dir"; 
 	
 	public static final int SHARE_WEIBO = 1;
-	public static final int SHARE_QQ = 1;
+	public static final int SHARE_QQ = 2;
 	
 
 }

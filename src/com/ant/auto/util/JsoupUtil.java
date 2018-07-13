@@ -97,7 +97,6 @@ public class JsoupUtil {
 				url = url.substring(0, url.length() - 1);
 			}
 			String[] arrTemp = url.split("&");
-			System.out.println(arrTemp[0]);
 			for (String str : arrTemp) {
 				String[] qs = str.split("=");
 				map.put(qs[0], qs[1]);

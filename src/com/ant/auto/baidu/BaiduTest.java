@@ -1,11 +1,7 @@
 package com.ant.auto.baidu;
 
-import java.net.URL;
-
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 import com.ant.auto.core.AssembleBrowserFactory;
 import com.ant.auto.util.JsoupUtil;

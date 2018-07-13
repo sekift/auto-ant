@@ -18,7 +18,7 @@ public class ToutiaoMain {
 
 	public static void main(String args[]) {
 		WebDriver driver = null;
-		int type = 1;
+		int type = 2;
 		String chargeType = null;
 		if ( Constants.SHARE_WEIBO == type) {
 			chargeType = Constants.WEIBO_STR;

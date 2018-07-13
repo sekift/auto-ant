@@ -16,9 +16,8 @@ public class BaiduMain {
 				Constants.BAIDU_STR, Constants.ACCOUNT_STR);
 		for (Map<String, String> map : list) {
 			driver = AssembleBrowserFactory.getBrower();
-			//SignUp.signUpRun
-			BaiduFlower.sendFlower(map.get(Constants.USERNAME_STR),
-					map.get(Constants.PASSWORD_STR), driver);
+			//BaiduSignUp.signUpRun(map.get(Constants.USERNAME_STR), map.get(Constants.PASSWORD_STR), driver);
+			BaiduFlower.sendFlower(map.get(Constants.USERNAME_STR), map.get(Constants.PASSWORD_STR), driver);
 		}
 		driver.quit();
 	}
