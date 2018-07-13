@@ -1,4 +1,7 @@
-﻿# auto-ant
+﻿# 废弃
+本项目已废弃，升级到：https://github.com/sekift/auto-ant-pro。<br />
+
+# auto-ant
 自动蚂蚁，自动游走者，乃最大者。
 
 # 更新<br />
